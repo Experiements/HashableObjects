@@ -7,16 +7,28 @@
 
 import SwiftUI
 
-struct Student: Hashable {
-    let name: String
-}
-
 struct ContentView: View {
+
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var projects: FetchedResults<Projects>
+    
     var body: some View {
-        let students = [Student(name: "Chris"), Student(name: "Chris"), Student(name: "Eiko")]
-        List {
-            ForEach(students, id:\.self) {
-                Text($0.name)
+        VStack {
+            List(projects, id:\.self) { project in
+                Text(project.name)
+            }
+            
+            Button("Add") {
+                let project = Projects(context: moc)
+                project.name = "My New Project"
+            }
+            
+            Button("Save") {
+                do {
+                    try moc.save()
+                } catch {
+                    print(error.localizedDescription)
+                }
             }
         }
     }

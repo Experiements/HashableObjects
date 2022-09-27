@@ -17,22 +17,27 @@ extension Projects {
     }
 
     @NSManaged public var coreName: String?
-    @NSManaged public var coreDescription: String?
+    @NSManaged public var coreProjectDescription: String?
     @NSManaged public var coreCreateDtTm: Date?
 
 }
 
 extension Projects : Identifiable {
 
-    public var Name : String {
-        return coreName ?? ""
+    public var name : String {
+        get {
+            return coreName ?? ""
+        }
+        set(newName) {
+            coreName = newName
+        }
     }
     
-    public var Description : String {
-        return coreDescription ?? ""
+    public var projectSescription : String {
+        return coreProjectDescription ?? ""
     }
     
-    public var CreateDate : Date {
+    public var createDate : Date {
         return coreCreateDtTm ?? Date.now
     }
 }

@@ -2,7 +2,12 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Projects" representedClassName="Projects" syncable="YES">
         <attribute name="coreCreateDtTm" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="coreDescription" optional="YES" attributeType="String"/>
         <attribute name="coreName" optional="YES" attributeType="String"/>
+        <attribute name="coreProjectDescription" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="coreName"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
 </model>
